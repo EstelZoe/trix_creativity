@@ -18,18 +18,18 @@ function Home() {
     const aboutImages = [about1, about2, about3];
     const heroImages = [hero, hero1, hero2, hero3];
 
-   useEffect(() => {
-  const interval = setInterval(() => {
-    setCurrentImage((prev) => {
-      if (prev >= aboutImages.length) {
-        return 0;
-      }
-      return prev + 1;
-    });
-  }, 5000);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImage((prev) => {
+                if (prev >= aboutImages.length) {
+                    return 0;
+                }
+                return prev + 1;
+            });
+        }, 5000);
 
-  return () => clearInterval(interval);
-}, []);
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -90,7 +90,7 @@ function Home() {
                         >
                             <div className="text-center">
                                 <h3 className="text-lg md:text-xl font-semibold text-white hover:text-red-400 transition cursor-pointer">
-                                    About
+                                    Bulk Printing
                                 </h3>
                                 <p className="mt-2 text-sm text-gray-300 max-w-[180px]">
                                     Learn who we are and what drives our creative vision.
@@ -99,7 +99,7 @@ function Home() {
 
                             <div className="text-center">
                                 <h3 className="text-lg md:text-xl font-semibold text-white hover:text-red-400 transition cursor-pointer">
-                                    Services
+                                   Coperate Designs
                                 </h3>
                                 <p className="mt-2 text-sm text-gray-300 max-w-[180px]">
                                     Explore the digital services we provide for businesses.
@@ -108,7 +108,7 @@ function Home() {
 
                             <div className="text-center">
                                 <h3 className="text-lg md:text-xl font-semibold text-white hover:text-red-400 transition cursor-pointer">
-                                    Projects
+                                    Social Media Manangement
                                 </h3>
                                 <p className="mt-2 text-sm text-gray-300 max-w-[180px]">
                                     Discover some of our featured creative and branding work.
@@ -131,7 +131,7 @@ function Home() {
 
             {/* ABOUT SECTION */}
             <section className="w-full bg-white">
-                <div className="flex flex-col lg:flex-row min-h-[650px]">
+                <div className="flex flex-col lg:flex-row min-h-[550px]">
 
                     {/* Left Side - Images */}
                     <div className="lg:w-3/5 h-[400px] lg:h-[650px] overflow-hidden">
@@ -182,6 +182,57 @@ function Home() {
 
                 </div>
             </section>
+            {/* OUR WORK */}
+            <section className="w-full bg-white">
+                <div className="flex flex-col lg:flex-row min-h-[550px]">
+                    {/* Left Side - Text */}
+                    <div className="lg:w-2/5 flex items-center px-8 lg:px-16 py-16">
+                        <div>
+                            <h2 className="text-4xl font-bold text-gray-900">
+                                About Us
+                            </h2>
+
+                            <p className="mt-8 text-gray-600 leading-8">
+                                Your paragraph goes here...
+                            </p>
+
+                            <p className="mt-6 text-gray-600 leading-8">
+                                Your second paragraph goes here...
+                            </p>
+                        </div>
+                    </div>
+                    {/* Right Side - Images */}
+                    <div className="lg:w-3/5 h-[400px] lg:h-[650px] overflow-hidden">
+                        <div className="relative w-full h-full overflow-hidden">
+                            <motion.div
+                                className="flex h-full"
+                                animate={{
+                                    x: `-${currentImage * 100}%`,
+                                }}
+                                transition={{
+                                    duration: 1,
+                                    ease: "easeInOut",
+                                }}
+                            >
+                                {[...aboutImages, aboutImages[0]].map((image, index) => (
+                                    <div
+                                        key={index}
+                                        className="w-full h-full flex-shrink-0"
+                                        style={{ minWidth: "100%" }}
+                                    >
+                                        <img
+                                            src={image}
+                                            alt={`About ${index + 1}`}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                ))}
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </>
     );
 }
